@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="RobotCar" pkg="ninebot_gx" type="SmartCar"></node>
+    <node name="RobotOdoemtry" pkg="ninebot_gx" type="RobotOdoemtry"></node>
+</launch>

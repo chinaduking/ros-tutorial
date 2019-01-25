@@ -105,7 +105,7 @@ namespace odometry
         odom_trans.header.stamp = ros::Time::now();
         //发布坐标变换的父子坐标系
         odom_trans.header.frame_id = "odom";     
-        odom_trans.child_frame_id = "base_footprint";       
+        odom_trans.child_frame_id = "base_link";       
         //tf位置数据：x,y,z,方向
         odom_trans.transform.translation.x = this->position_x/1000;  //m
         odom_trans.transform.translation.y = this->position_y/1000;  //m
@@ -116,14 +116,17 @@ namespace odometry
 
         //载入里程计时间戳
         odom.header.stamp = ros::Time::now(); 
+        
         //里程计的父子坐标系
         odom.header.frame_id = "odom";
-        odom.child_frame_id = "base_footprint";       
+        odom.child_frame_id = "base_link"; 
+
         //里程计位置数据：x,y,z,方向
         odom.pose.pose.position.x = position_x/1000;     
         odom.pose.pose.position.y = position_y/1000;
         odom.pose.pose.position.z = 0.0;
-        odom.pose.pose.orientation = odom_quat;       
+        odom.pose.pose.orientation = odom_quat; 
+
         //载入线速度和角速度
         odom.twist.twist.linear.x = velocity_linear/1000;
         odom.twist.twist.angular.z = velocity_angular/1000;    
